@@ -82,7 +82,7 @@ class ChangeStatus(commands.Cog):
             await ctx.send(f"Set `{five}` as the fifth status!")
 
     @status_group.command(name="clear")
-    async def start_the_status(self, ctx):
+    async def statusy_clear(self, ctx):
         if clear == None:
              await ctx.send("Please write the command properly!")
         else:
