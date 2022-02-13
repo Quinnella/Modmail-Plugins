@@ -34,51 +34,51 @@ class ChangeStatus(commands.Cog):
     @status_group.command(name="start")
     async def statusy_start(self, ctx):
         if self.first == None or self.second == None or self.third == None:
-            await ctx.send("Please set the 3 Status's first!")
+            await ctx.send("`Please set the 4 statuses first!`")
         else:
             self.start_the_status.start()
-            await ctx.send("Successfully set rotating presence!")
+            await ctx.send("**`Successfully set rotating presence!`**")
 
     @status_group.command(name="one")
     async def first_set(self, ctx, *, first):
         if first == None:
-            await ctx.send("Please choose something to set!")
+            await ctx.send("`Please choose something to set!`")
         else:
             self.first = first
-            await ctx.send(f"Set `{first}` as the first status!")
+            await ctx.send(f"**Set `{first}` as the first status!**")
 
     @status_group.command(name="two")
     async def second_set(self, ctx, *, two):
         if two == None:
-            await ctx.send("Please choose something to set!")
+            await ctx.send("`Please choose something to set!`")
         else:
             self.second = two
-            await ctx.send(f"Set `{two}` as the second status!")
+            await ctx.send(f"**Set `{two}` as the second status!**")
 
     @status_group.command(name="three")
     async def third_set(self, ctx, *, three):
         if three == None:
-            await ctx.send("Please choose something to set!")
+            await ctx.send("`Please choose something to set!`")
         else:
             self.third = three
-            await ctx.send(f"Set `{three}` as the third status!")
+            await ctx.send(f"**Set `{three}` as the third status!**")
             
     @status_group.command(name="four")
     async def fourth_set(self, ctx, *, four):
         if four == None:
-            await ctx.send("Please choose something to set!")
+            await ctx.send("`Please choose something to set!`")
         else:
             self.fourth = four
-            await ctx.send(f"Set `{four}` as the fourth status!")
+            await ctx.send(f"**Set `{four}` as the fourth status!**")
 
     @status_group.command(name="stop")
     async def statusy_stop(self, ctx):
         if self.first == None or self.second == None or self.third == None or self.fourth == None:
-             await ctx.send("There are no rotating presence.")
+             await ctx.send("`There are no rotating presence.`")
         else:
              self.start_the_status.cancel()
              await self.bot.change_presence(status=None, activity=None)
-             await ctx.send("**Successfully Stopped all Rotating presence!**")
+             await ctx.send("**`Successfully Stopped all Rotating presence!`**")
              
 
 def setup(bot):
