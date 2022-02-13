@@ -86,7 +86,7 @@ class ChangeStatus(commands.Cog):
         if self.first == None or self.second == None or self.third == None or self.fourth == None or self.fifth == None:
              await ctx.send("There are no running activity / status")
         else:
-             tasks.loop.cancel()
+             self.task.cancel()
 
 
 def setup(bot):
