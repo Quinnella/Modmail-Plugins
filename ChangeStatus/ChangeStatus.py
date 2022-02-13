@@ -38,8 +38,8 @@ class ChangeStatus(commands.Cog):
 
     @status_group.command(name="start")
     async def statusy_start(self, ctx):
-        if self.first == None or self.second == None or self.third == None or self.fourth == None:
-            await ctx.send("Please set the 4 Status's first!")
+        if self.first == None or self.second == None or self.third == None or self.fourth == None or self.fifth == None:
+            await ctx.send("Please set the 5 Statuses first!")
         else:
             self.start_the_status.start()
             await ctx.send("Done! If you experience any problems just run this command again!")
