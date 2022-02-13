@@ -24,7 +24,7 @@ class ChangeStatus(commands.Cog):
         await asyncio.sleep(10)
         await self.bot.change_presence(activity=discord.Streaming(name=f"{self.fourth}", url="https://www.twitch.tv/somechannel"))
         await asyncio.sleep(10)
-        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name=f"{self.fifth"))
+        await self.bot.change_presence(activity=discord.Activity(type=discord.ActivityType.competing, name=f"{self.fifth}"))
         await asyncio.sleep(10)
 
     @commands.group(name="statusy", invoke_without_command=True)
