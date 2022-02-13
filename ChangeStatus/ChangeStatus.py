@@ -19,8 +19,6 @@ class ChangeStatus(commands.Cog):
         await asyncio.sleep(10)
         await self.bot.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.listening, name=f"{self.third}"))
         await asyncio.sleep(10)
-        await self.bot.change_presence(activity=discord.Streaming(name=f"{self.fourth}", url="https://www.twitch.tv/somechannel"))
-        await asyncio.sleep(10)
         await self.bot.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.competing, name=f"{self.fifth}"))
         await asyncio.sleep(10)
 
@@ -28,7 +26,7 @@ class ChangeStatus(commands.Cog):
     async def status_group(self, ctx):
         embed = discord.Embed(
             title="Change the Bot's Status!",
-            description=f"Change the Bot's Status to make it change every 10 Seconds!\n One = Playing, Two = Watching, Three = Listening to, Four = Streaming, Fifth = Competing in\n**If your not roatating all 5 then please do not use the command on the numbers you wont be using\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy stop`: Stop the bot's looping status & activity\n\n`{self.bot.prefix}statusy one`: Set the first status of the bot!\n`{self.bot.prefix}statusy two`: Set the second status of the bot!\n`{self.bot.prefix}statusy three`: Set third first status of the bot!\n`{self.bot.prefix}statusy four`: Set the fourth status of the bot!\n`{self.bot.prefix}statusy five`: Set the Fifth status of the bot!",
+            description=f"Change the Bot's Status to make it change every 10 Seconds!\n\n One = Playing, Two = Watching, Three = Listening to, Fourth = Competing in\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy stop`: Stop the bot's looping status & activity\n\n`{self.bot.prefix}statusy one`: Set the first status of the bot!\n`{self.bot.prefix}statusy two`: Set the second status of the bot!\n`{self.bot.prefix}statusy three`: Set third first status of the bot!\n`{self.bot.prefix}statusy four`: Set the fourth status of the bot!\n`{self.bot.prefix}statusy five`: Set the Fifth status of the bot!",
             color=self.bot.main_color
         )
         await ctx.send(embed=embed)
@@ -36,7 +34,12 @@ class ChangeStatus(commands.Cog):
     @status_group.command(name="start")
     async def statusy_start(self, ctx):
             self.start_the_status.start()
-            await ctx.send("Done! If you didn't set any activities this won't work!")
+        embed = discord.Embed(
+            title="Rotating Activity & Status Started",
+            description=f"`If you didn't set activites this wont work`",
+            color=self.bot.main_color
+        )
+        await ctx.send(embed=embed)
 
     @status_group.command(name="one")
     async def first_set(self, ctx, *, first):
@@ -70,17 +73,9 @@ class ChangeStatus(commands.Cog):
             self.fourth = four
             await ctx.send(f"Set `{four}` as the fourth status!")
 
-    @status_group.command(name="five")
-    async def fifth_set(self, ctx, *, five):
-        if five == None:
-            await ctx.send("Please choose something to set!")
-        else:
-            self.fifth = five
-            await ctx.send(f"Set `{five}` as the fifth status!")
-
     @status_group.command(name="stop")
     async def statusy_stop(self, ctx):
-        if self.first == None or self.second == None or self.third == None or self.fourth == None or self.fifth == None:
+        if self.first == None or self.second == None or self.third == None or self.fourth == None
              await ctx.send("There are no rotating activity / status.")
         else:
              self.start_the_status.cancel()
