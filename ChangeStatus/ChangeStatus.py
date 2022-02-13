@@ -84,7 +84,7 @@ class ChangeStatus(commands.Cog):
              await ctx.send("There are no rotating activity / status.")
         else:
              self.start_the_status.cancel()
-             await ctx.send("Successfully Stopped rotating presence, please type **{self.bot.prefix}activity clear** to fully clear the presence!")
+             await ctx.send("**Successfully Stopped rotating presence, please type `<prefix>activity clear` to fully clear the presence!**")
 
 
 def setup(bot):
