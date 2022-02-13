@@ -73,8 +73,8 @@ class ChangeStatus(commands.Cog):
 
     @status_group.command(name="stop")
     async def statusy_stop(self, ctx):
-        if self.first == None or self.second == None or self.third == None or self.fourth == None
-             await ctx.send("There are no rotating activity / status.")
+        if self.first == None or self.second == None or self.third == None or self.fourth == None:
+             await ctx.send("There are no rotating presence.")
         else:
              self.start_the_status.cancel()
              await self.bot.change_presence(status=None, activity=None)
