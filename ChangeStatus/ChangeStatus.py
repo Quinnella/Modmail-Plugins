@@ -28,18 +28,15 @@ class ChangeStatus(commands.Cog):
     async def status_group(self, ctx):
         embed = discord.Embed(
             title="Change the Bot's Status!",
-            description=f"Change the Bot's Status to make it change every 10 Seconds!\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy stop`: Stop the bot's looping status & activity\n\n`{self.bot.prefix}statusy one`: Set the first status of the bot!\n`{self.bot.prefix}statusy two`: Set the second status of the bot!\n`{self.bot.prefix}statusy three`: Set third first status of the bot!\n`{self.bot.prefix}statusy four`: Set the fourth status of the bot!\n`{self.bot.prefix}statusy five`: Set the Fifth status of the bot!",
+            description=f"Change the Bot's Status to make it change every 10 Seconds!\n One = Playing, Two = Watching, Three = Listening to, Four = Streaming, Fifth = Competing in\n**If your not roatating all 5 then please do not use the command on the numbers you wont be using\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy stop`: Stop the bot's looping status & activity\n\n`{self.bot.prefix}statusy one`: Set the first status of the bot!\n`{self.bot.prefix}statusy two`: Set the second status of the bot!\n`{self.bot.prefix}statusy three`: Set third first status of the bot!\n`{self.bot.prefix}statusy four`: Set the fourth status of the bot!\n`{self.bot.prefix}statusy five`: Set the Fifth status of the bot!",
             color=self.bot.main_color
         )
         await ctx.send(embed=embed)
 
     @status_group.command(name="start")
     async def statusy_start(self, ctx):
-        if self.first == None or self.second == None or self.third == None or self.fourth == None or self.fifth == None:
-            await ctx.send("Please set the 5 Statuses first!")
-        else:
             self.start_the_status.start()
-            await ctx.send("Done! If you experience any problems just run this command again!")
+            await ctx.send("Done! If you didn't set any activities this won't work!")
 
     @status_group.command(name="one")
     async def first_set(self, ctx, *, first):
