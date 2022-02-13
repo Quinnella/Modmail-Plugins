@@ -19,14 +19,14 @@ class ChangeStatus(commands.Cog):
         await asyncio.sleep(10)
         await self.bot.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.listening, name=f"{self.third}"))
         await asyncio.sleep(10)
-        await self.bot.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.competing, name=f"{self.fifth}"))
+        await self.bot.change_presence(status=discord.Status.dnd, activity=discord.Activity(type=discord.ActivityType.competing, name=f"{self.fourth}"))
         await asyncio.sleep(10)
 
     @commands.group(name="statusy", invoke_without_command=True)
     async def status_group(self, ctx):
         embed = discord.Embed(
             title="Change the Bot's Status!",
-            description=f"Change the Bot's Status to make it change every 10 Seconds!\n\n One = Playing, Two = Watching, Three = Listening to, Fourth = Competing in\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy stop`: Stop the bot's looping status & activity\n\n`{self.bot.prefix}statusy one`: Set the first status of the bot!\n`{self.bot.prefix}statusy two`: Set the second status of the bot!\n`{self.bot.prefix}statusy three`: Set third first status of the bot!\n`{self.bot.prefix}statusy four`: Set the fourth status of the bot!\n`{self.bot.prefix}statusy five`: Set the Fifth status of the bot!",
+            description=f"Change the Bot's Status to make it change every 10 Seconds!\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy stop`: Stop the bot's looping status & activity\n\n`{self.bot.prefix}statusy one`: Set the first [Playing] status of the bot!\n`{self.bot.prefix}statusy two`: Set the second [Watching] status of the bot!\n`{self.bot.prefix}statusy three`: Set third [Listening to] status of the bot!\n`{self.bot.prefix}statusy four`: Set the fourth [Competing in] status of the bot!",
             color=self.bot.main_color
         )
         await ctx.send(embed=embed)
