@@ -28,7 +28,7 @@ class ChangeStatus(commands.Cog):
     async def status_group(self, ctx):
         embed = discord.Embed(
             title="Change the Bot's Status!",
-            description=f"Change the Bot's Status to make it change every 10 Seconds!\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy clear`: Clear the bot's status\n\n`{self.bot.prefix}statusy one`: Set the first status of the bot!\n`{self.bot.prefix}statusy two`: Set the second status of the bot!\n`{self.bot.prefix}statusy three`: Set third first status of the bot!\n`{self.bot.prefix}statusy four`: Set the fourth status of the bot!\n`{self.bot.prefix}statusy five`: Set the Fifth status of the bot!",
+            description=f"Change the Bot's Status to make it change every 10 Seconds!\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy stop`: Stop the bot's looping status & activity\n\n`{self.bot.prefix}statusy one`: Set the first status of the bot!\n`{self.bot.prefix}statusy two`: Set the second status of the bot!\n`{self.bot.prefix}statusy three`: Set third first status of the bot!\n`{self.bot.prefix}statusy four`: Set the fourth status of the bot!\n`{self.bot.prefix}statusy five`: Set the Fifth status of the bot!",
             color=self.bot.main_color
         )
         await ctx.send(embed=embed)
@@ -81,13 +81,13 @@ class ChangeStatus(commands.Cog):
             self.fifth = five
             await ctx.send(f"Set `{five}` as the fifth status!")
 
-    @status_group.command(name="clear")
-    async def statusy_clear(self, ctx):
+    @status_group.command(name="stop")
+    async def statusy_stop(self, ctx):
         if self.first == None or self.second == None or self.third == None or self.fourth == None or self.fifth == None:
-             await ctx.send("There are no running activity / status")
+             await ctx.send("There are no rotating activity / status.")
         else:
              self.start_the_status.cancel()
-             await ctx.send("Successfully Cleared status & activity!")
+             await ctx.send("Successfully Stopped rotating presence, please type **{self.bot.prefix}activity clear** to fully clear the presence!")
 
 
 def setup(bot):
