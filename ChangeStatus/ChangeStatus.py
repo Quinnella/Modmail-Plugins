@@ -86,8 +86,8 @@ class ChangeStatus(commands.Cog):
         if self.first == None or self.second == None or self.third == None or self.fourth == None or self.fifth == None:
              await ctx.send("There are no running activity / status")
         else:
-             for task in asyncio.Task.all_tasks():
-                 task.cancel()
+             self.start_the_status.cancel()
+             await ctx.send("Successfully Cleared status & activity!")
 
 
 def setup(bot):
