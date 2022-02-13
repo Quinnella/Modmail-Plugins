@@ -33,13 +33,11 @@ class ChangeStatus(commands.Cog):
 
     @status_group.command(name="start")
     async def statusy_start(self, ctx):
+        if self.first == None or self.second == None or self.third == None:
+            await ctx.send("Please set the 3 Status's first!")
+        else:
             self.start_the_status.start()
-        embed = discord.Embed(
-            title="Rotating Activity & Status Started",
-            description=f"`If you didn't set activites this wont work`",
-            color=self.bot.main_color
-        )
-        await ctx.send(embed=embed)
+            await ctx.send("Successfully set rotating presence!")
 
     @status_group.command(name="one")
     async def first_set(self, ctx, *, first):
@@ -79,8 +77,9 @@ class ChangeStatus(commands.Cog):
              await ctx.send("There are no rotating activity / status.")
         else:
              self.start_the_status.cancel()
-             await ctx.send("**Successfully Stopped rotating presence, please type `<prefix>activity clear` to fully clear the presence!**")
-
+             await self.bot.change_presence(status=None, activity=None)
+             await ctx.send("**Successfully Stopped all Rotating presence!**")
+             
 
 def setup(bot):
     bot.add_cog(ChangeStatus(bot))
