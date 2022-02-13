@@ -83,7 +83,10 @@ class ChangeStatus(commands.Cog):
 
     @status_group.command(name="clear")
     async def start_the_status(self):
-    await self.bot.change_presence(status=None, activity=None)
+        if clear == None:
+             await ctx.send("Please write the command properly!")
+        else:
+             await self.bot.change_presence(status=None, activity=None)
 
 
 def setup(bot):
