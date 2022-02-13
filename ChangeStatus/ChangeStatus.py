@@ -28,7 +28,7 @@ class ChangeStatus(commands.Cog):
     async def status_group(self, ctx):
         embed = discord.Embed(
             title="Change the Bot's Status!",
-            description=f"Change the Bot's Status to make it change every 10 Seconds!\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy one`: Set the first status of the bot!\n`{self.bot.prefix}statusy two`: Set the second status of the bot!\n`{self.bot.prefix}statusy three`: Set third first status of the bot!\n`{self.bot.prefix}statusy four`: Set the fourth status of the bot!\n`{self.bot.prefix}statusy five`: Set the Fifth status of the bot!",
+            description=f"Change the Bot's Status to make it change every 10 Seconds!\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy clear`: Clear the bot's status\n\n`{self.bot.prefix}statusy one`: Set the first status of the bot!\n`{self.bot.prefix}statusy two`: Set the second status of the bot!\n`{self.bot.prefix}statusy three`: Set third first status of the bot!\n`{self.bot.prefix}statusy four`: Set the fourth status of the bot!\n`{self.bot.prefix}statusy five`: Set the Fifth status of the bot!",
             color=self.bot.main_color
         )
         await ctx.send(embed=embed)
@@ -81,6 +81,9 @@ class ChangeStatus(commands.Cog):
             self.fifth = five
             await ctx.send(f"Set `{five}` as the fifth status!")
 
+    @status_group.command(name="clear")
+    async def statc(c):
+    await self.bot.change_presence(status=None, activity=discord.Game(name=None))
 
 def setup(bot):
     bot.add_cog(ChangeStatus(bot))
