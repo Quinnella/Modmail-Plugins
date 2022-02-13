@@ -86,7 +86,13 @@ class ChangeStatus(commands.Cog):
         if self.first == None or self.second == None or self.third == None or self.fourth == None or self.fifth == None:
              await ctx.send("There are no running activity / status")
         else:
-             self.task.cancel()
+             if activity_type == "clear":
+            self.bot.config.remove("activity_type")
+            self.bot.config.remove("activity_message")
+            await self.bot.config.update()
+            await self.set_presence()
+            embed = discord.Embed(title="Activity Removed", color=self.bot.main_color)
+            return await ctx.send(embed=embed)
 
 
 def setup(bot):
