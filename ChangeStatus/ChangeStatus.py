@@ -82,8 +82,9 @@ class ChangeStatus(commands.Cog):
             await ctx.send(f"Set `{five}` as the fifth status!")
 
     @status_group.command(name="clear")
-    async def statusy_clear(self, ctx):
-    await self.bot.change_presence(status=None, activity=discord.Game(name=None))
+    async def start_the_status(self):
+    await self.bot.change_presence(status=None, activity=None)
+
 
 def setup(bot):
     bot.add_cog(ChangeStatus(bot))
