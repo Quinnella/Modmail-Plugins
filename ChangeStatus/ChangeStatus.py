@@ -82,7 +82,7 @@ class ChangeStatus(commands.Cog):
             await ctx.send("Please choose something to set!")
         else:
             self.fifth = five
-            await ctx.send(f"Set `{fifth}` as the fourth status!")
+            await ctx.send(f"Set `{five}` as the fifth status!")
 
 
 def setup(bot):
