@@ -24,7 +24,7 @@ class ChangeStatus(commands.Cog):
     async def status_group(self, ctx):
         embed = discord.Embed(
             title="Change the Bot's Status!",
-            description=f"Change the Bot's Status to make it change every 10 Seconds!\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy stop`: Stop the bot's looping status & activity\n\n`{self.bot.prefix}statusy one`: Set the first [Playing] status of the bot!\n`{self.bot.prefix}statusy two`: Set the second [Watching] status of the bot!\n`{self.bot.prefix}statusy three`: Set third [Listening to] status of the bot!\n`{self.bot.prefix}statusy four`: Set the fourth [Competing in] status of the bot!",
+            description=f"Change the Bot's Status to make it change every 10 Seconds!\n\nAvailable Commands:\n`{self.bot.prefix}statusy start`: Start the Status Changing Process\n`{self.bot.prefix}statusy stop`: Stop the bot's looping status & activity\n\n`{self.bot.prefix}statusy one`: Set the first **[Playing]** status of the bot!\n`{self.bot.prefix}statusy two`: Set the second **[Watching]** status of the bot!\n`{self.bot.prefix}statusy three`: Set third **[Listening to]** status of the bot!",
             color=self.bot.main_color
         )
         await ctx.send(embed=embed)
@@ -32,7 +32,7 @@ class ChangeStatus(commands.Cog):
     @status_group.command(name="start")
     async def statusy_start(self, ctx):
         if self.first == None or self.second == None or self.third == None:
-            await ctx.send("`Please set the 4 statuses first!`")
+            await ctx.send("`Please set the 3 statuses first!`")
         else:
             self.start_the_status.start()
             await ctx.send("**`Successfully set rotating presence!`**")
@@ -60,14 +60,6 @@ class ChangeStatus(commands.Cog):
         else:
             self.third = three
             await ctx.send(f"**Set `{three}` as the third status!**")
-            
-    @status_group.command(name="four")
-    async def fourth_set(self, ctx, *, four):
-        if four == None:
-            await ctx.send("`Please choose something to set!`")
-        else:
-            self.fourth = four
-            await ctx.send(f"**Set `{four}` as the fourth status!**")
 
     @status_group.command(name="stop")
     async def statusy_stop(self, ctx):
